@@ -19,5 +19,8 @@
   "homepage": "https://github.com/C-Marfil/music-library#readme",
   "devDependencies": {
     "eslint": "^8.29.0"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
   }
 }
