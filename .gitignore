@@ -1,4 +1,6 @@
 
+.env/
+test.env/
 node_modules/# Logs
 logs
 *.log
@@ -129,3 +131,4 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
