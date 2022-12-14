@@ -4,8 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
-    "start": "nodemon -r dotenv/config index.js"
+    "migrate": "node scripts/migrate.js",
+    "prestart": "node scripts/create-database.js && npm run migrate",
+    "start": "nodemon -r dotenv/config index.js",
+    "pretest": "node scripts/create-database.js test && npm run migrate test",
+    "test": "mocha tests/**/*.js --exit --recursive --timeout 60000 --file ./scripts/test-setup.js",
+    "posttest": "node scripts/drop-database.js test"
   },
   "repository": {
     "type": "git",
@@ -19,12 +23,17 @@
   },
   "homepage": "https://github.com/C-Marfil/music-library#readme",
   "devDependencies": {
+    "chai": "^4.3.7",
     "dotenv": "^16.0.3",
     "eslint": "^8.29.0",
     "jest": "^29.3.1",
-    "nodemon": "^2.0.20"
+    "mocha": "^10.2.0",
+    "nodemon": "^2.0.20",
+    "supertest": "^6.3.3"
   },
   "dependencies": {
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "pg": "^8.8.0",
+    "postgres-migrations": "^5.3.0"
   }
 }
