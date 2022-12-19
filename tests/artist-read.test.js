@@ -36,6 +36,22 @@ describe('Read Artist', () => {
 
         expect(artistRecord).to.deep.equal(expected)
       })
+    });
+  });
+
+  describe('GET /artists/{id}', () => {
+    it('returns the artist with the correct id', async () => {
+      const { status, body } = await request(app).get(`/artists/${artists[0].id}`).send()
+
+      expect(status).to.equal(200)
+      expect(body).to.deep.equal(artists[0])
     })
-  })
+
+    it('returns a 404 if the artist does not exist', async () => {
+      const { status, body } = await request(app).get('/artists/999999999').send()
+
+      expect(status).to.equal(404)
+      expect(body.message).to.equal('artist 999999999 does not exist')
+    })
+  });
 });
