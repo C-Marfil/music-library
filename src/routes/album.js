@@ -11,6 +11,10 @@ albumRouter.get('/:id', controllerAlbums.getAlbumById);
 
 albumRouter.get('/artist/:artistname', controllerAlbums.getAlbumByArtistName);
 
+albumRouter.put('/:id', controllerAlbums.updateAlbum);
 
+albumRouter.patch('/:id', controllerAlbums.updateAlbum2);
+
+albumRouter.delete('/:id', controllerAlbums.deleteAlbums);
 
 module.exports = albumRouter;
